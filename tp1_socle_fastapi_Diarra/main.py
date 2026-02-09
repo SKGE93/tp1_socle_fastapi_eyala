@@ -32,6 +32,15 @@ def hello_fastapi():
 def get_users():
     return users
 
+@app.get("/users/{user_id}")
+def get_user(user_id : int):
+    return {"id" : user_id}
+
+
+@app.get("/search")
+def search(name : str | None = None):
+    return {"search" : name}
+
 
 
 
