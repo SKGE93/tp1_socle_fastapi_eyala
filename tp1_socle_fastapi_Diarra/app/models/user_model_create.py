@@ -1,5 +1,4 @@
 from pydantic import BaseModel, Field
-import json
 
 class UserModelCreate(BaseModel):
     login: str = Field(min_length=3)

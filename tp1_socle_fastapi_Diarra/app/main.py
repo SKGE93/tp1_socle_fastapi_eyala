@@ -2,8 +2,14 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from app.factories.users_factory import create_users
 import json
+from app.api.routers import users_router
+
 
 app = FastAPI()
+
+
+app = FastAPI(title="TP FastAPI Users")
+app.include_router(users_router)
 
 class User(BaseModel):
     id: int
@@ -28,7 +34,7 @@ def hello_fastapi():
 
 @app.get("/users",
     response_model=list[User],
-    summary="recuperer la liste des utilisateurs",
+    summary="recuperer la liste des utilisateurs",      
     description = "retourne une liste d'utilisateur au format JSON"
 )
 def get_users():
