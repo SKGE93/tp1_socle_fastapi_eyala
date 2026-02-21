@@ -2,7 +2,7 @@ from typing import List, Optional
 from app.models.user_model import UserModel
 from app.models.user_model_create import UserModelCreate
 from app.services.users_service_protocol import IUsersService
-from app.factories.users_factory_protocol import IUserFactory
+from app.factories.users_factory_protocol import IUsersFactory
 
 class UsersService:
 
@@ -14,7 +14,7 @@ class UsersService:
     - persistance en mémoire (volontairement simple)
     """
 
-    def __init__(self, factory: IUserFactory, users_json_path: str):
+    def __init__(self, factory: IUsersFactory, users_json_path: str):
         self.factory = factory
         self._users: list[UserModel] = factory.create_users(users_json_path)
 
