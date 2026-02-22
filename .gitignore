@@ -1,0 +1,20 @@
+# Fichiers d'exemple / illustration uniquement
+tp1_socle_fastapi_Diarra/app/factories/fake_users_repository.py
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environnements virtuels
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# Variables d'environnement
+.env
