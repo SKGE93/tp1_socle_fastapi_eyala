@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 from app.factories.users_factory import UsersFactory
+from app.models.user_model import UserModel
 
 
 def test_should_create_users_given_valid_users_list(tmp_path: Path):
