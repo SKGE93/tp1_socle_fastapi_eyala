@@ -83,3 +83,12 @@ def get_db() -> Generator[Session, None, None]:
         yield db
     finally:
         db.close()
+
+
+def SessionLocal() -> Session:
+    """
+    Crée et retourne une nouvelle Session SQLAlchemy.
+    Nécessaire pour les tests et les scripts de seed.
+    """
+    factory = get_sessionmaker()
+    return factory()
