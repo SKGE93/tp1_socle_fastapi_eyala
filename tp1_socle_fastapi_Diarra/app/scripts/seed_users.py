@@ -8,12 +8,13 @@ from sqlalchemy import text
 from app.core.settings import get_settings
 from app.db.engine import get_engine
 from app.db.base import Base
-from app.models_orm.user_table import UserTable # Important pour que create_all() puisse mapper UserTable
+from app.models_orm.user_table import UserTable  # Important pour que create_all() puisse mapper UserTable
 
 def main() -> None:
+    get_settings.cache_clear()  # Vide le cache pour relire les vars d'env (utile en tests)
     settings = get_settings()
 
-    engine = get_engine()
+    engine = get_engine(settings.database_url)  # URL explicite → bon Engine même en tests
     Base.metadata.create_all(bind=engine)
 
     json_path = Path(settings.users_json_path)
