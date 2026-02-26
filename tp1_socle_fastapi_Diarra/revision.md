@@ -73,5 +73,75 @@ L'override est la preuve matérielle que l'architecture est **bien découplée**
 - Cela confirme que le Router ne dépend pas d'une technologie précise, mais d'un **contrat/interface** (le Service).
 
 ### Quelle est la différence fondamentale entre Unitaire et Intégration ?
-- **Unitaire :** Teste la **logique métier** interne (le calcul, l'algorithme).
-- **Intégration :** Teste le **contrat de communication** (la "plomberie"). On vérifie que les données (Pydantic, JSON) passent correctement d'une couche à l'autre.
+### Quelle est la différence entre Intégration (Override) et E2E (Réel) ?
+- **Intégration (Override) :** Très rapide, teste la communication entre les couches en "faisant semblant" pour la partie difficile (Fakes).
+- **E2E (Réel) :** Plus lent mais **réaliste**. Teste la chaîne complète, y compris les vraies requêtes SQL et les contraintes de la base de données.
+
+### Pourquoi utiliser une base SQLite temporaire (`tmp_path`) ?
+- **Isolation :** On veut une **"Page Blanche"** pour chaque test. 
+- **Éviter la Pollution :** Si on utilisait une base partagée, les tests des uns pourraient faire échouer les tests des autres (données déjà présentes, suppressions inattendues). C'est ce qu'on appelle éviter les **"Flaky Tests"**.
+### Qu'est-ce que l'Infrastructure ?
+C'est la couche qui gère les **détails techniques** et les **systèmes externes**.
+- **Le "Comment" :** Elle s'occupe de la réalisation technique (ex: comment écrire en SQL, comment lire un fichier).
+- **Exemples :** SQLAlchemy, les URL de BDD, les fichiers JSON, les serveurs d'emails.
+## 5. Syntaxe de survie (Spécial Papier 📝)
+
+### La Route FastAPI (Le Router)
+```python
+@router.post("/", status_code=201)
+def create(payload: ModelCreate, srv: Service = Depends(get_srv)):
+    return srv.create(payload)
+```
+*Piège : Ne pas oublier le `:` après le `def` et l'indentation.*
+
+### Le Repository SQL (SQLAlchemy 2.0)
+```python
+stmt = select(UserTable).where(UserTable.id == user_id)
+result = db.execute(stmt).scalar_one_or_none()
+```
+*Piège : `select(Table)` et non `select(Model)`.*
+
+### Le Test (AAA + Client)
+```python
+def test_ok():
+    client = TestClient(app) # Arrange
+    resp = client.get("/users") # Act
+    assert resp.status_code == 200 # Assert
+```
+
+### L'Override (Le dictionnaire magic)
+```python
+app.dependency_overrides[fonction_origine] = fonction_fake
+# ... après le test ...
+app.dependency_overrides.clear()
+```
+
+### Pydantic vs ORM
+- **Pydantic :** `login: str` (simple type).
+- **ORM :** `login: Mapped[str] = mapped_column(unique=True)`
+
+---
+
+## 6. Astuces Stratégiques pour le Papier 💡
+
+### Le "Tiercé Gagnant" de SQLAlchemy
+Retiens juste ces 3 étapes pour n'importe quelle requête :
+1. **SELECT** (+ where) : `stmt = select(UserTable).where(...)`
+2. **EXECUTE** : `result = db.execute(stmt)`
+3. **RESULT** : `return result.scalar_one_or_none()`
+
+### Le "Réflexe Dépendance" (Router)
+Dès que tu déclares une route, ton paramètre service doit **toujours** avoir son `Depends` :
+`def ma_route(service: MonService = Depends(get_service)):`
+*(Sinon FastAPI ne saura pas quoi injecter !)*
+
+### Le Plan de Test (Le squelette AAA)
+Sur papier, écris d'abord les commentaires pour ne pas te perdre :
+1. `# Arrange` : (Client + Overrides)
+2. `# Act` : (La requête `client.get`)
+3. `# Assert` : (L'assertion `assert resp.status_code`)
+
+### Les détails qui "font pro"
+Sur une copie, sois très vigilant sur :
+- **L'indentation** (le décalage vers la droite dans les fonctions).
+- **Les deux-points (`:`)** à la fin des lignes `def`, `if`, `with` et après les décorateurs.
