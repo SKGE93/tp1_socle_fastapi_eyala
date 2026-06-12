@@ -35,7 +35,7 @@
     &quot;git-widget-placeholder&quot;: &quot;projet__fastapi__partie__5&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Cours/S6/DEV-AVANCEE/Fast_Api/tp1_socle_fastapi_Diarra&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Cours/S6/DEV-AVANCEE/Fast_Api/tp1_socle_fastapi_Seraphin&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -44,23 +44,23 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Cours\S6\DEV-AVANCEE\Fast_Api\tp1_socle_fastapi_Diarra" />
+      <recent name="C:\Cours\S6\DEV-AVANCEE\Fast_Api\tp1_socle_fastapi_Seraphin" />
     </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
-      <module name="tp1_socle_fastapi_Diarra" />
+      <module name="tp1_socle_fastapi_Seraphin" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="tp1_socle_fastapi_Diarra" />
+      <module name="tp1_socle_fastapi_Seraphin" />
       <option name="filePath" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="tp1_socle_fastapi_Diarra" />
+      <module name="tp1_socle_fastapi_Seraphin" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -82,7 +82,7 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="tp1_socle_fastapi_Diarra" />
+      <module name="tp1_socle_fastapi_Seraphin" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -94,7 +94,7 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Autodetect">
-      <module name="tp1_socle_fastapi_Diarra" />
+      <module name="tp1_socle_fastapi_Seraphin" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -109,7 +109,7 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
-      <module name="tp1_socle_fastapi_Diarra" />
+      <module name="tp1_socle_fastapi_Seraphin" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
